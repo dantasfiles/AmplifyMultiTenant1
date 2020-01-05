@@ -1,0 +1,15 @@
+type Todo
+  @model(subscriptions: null)
+  @auth(
+    rules: [
+      {allow: owner, ownerField: "tenant", identityClaim: "custom:tenant"}
+    ]
+  ) {
+  # @auth(
+  #  rules: [{allow: groups, groupsField: "tenant", groupClaim: "custom:tenant"}]
+  # ) {
+  id: ID!
+  tenant: ID!
+  name: String!
+  description: String
+}
